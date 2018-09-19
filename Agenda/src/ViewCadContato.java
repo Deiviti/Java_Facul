@@ -27,21 +27,25 @@ public class ViewCadContato {
 	public Contato inserir(ArrayList<Contato> listaCadContato) {
 
 		Contato contato = new Contato();
-		System.out.println("Digite o Nome do Contato: \n");
+		System.out.println("Digite o Nome do Contato: \n");		
 		contato.setNome(teclado.nextLine());		
-		System.out.println("Digite a Idade do Contato: \n");
+		System.out.println("Digite a Idade do Contato: \n");		
 		contato.setIdade(teclado.nextLine());		
-		System.out.println("Digite o telefone do Contato: \n");
+		System.out.println("Digite o telefone do Contato: \n");		
 		contato.setTelefone(teclado.nextLine());		
-		listaCadContato.add(contato);		
+		listaCadContato.add(contato);
+		System.out.println("Digite Enter para seguir !!");
+		teclado.nextLine();
 		return contato;		
 	}
 	
 	public void listar(ArrayList<Contato> listaCadContato ) {
 		int ct = listaCadContato.size();
 		for (int x = 0; x < ct; x++) {
-			System.out.printf("Código Contato %d - %s\n", x+1, listaCadContato.get(x));
-			System.out.println("\n");			
+			System.out.printf("Código Contato %d - %s\n", x, listaCadContato.get(x));
+			System.out.println("\n");	
+			System.out.println("Digite Enter para seguir !!");
+			teclado.nextLine();
 		}
 	}
 	
@@ -62,8 +66,13 @@ public class ViewCadContato {
 			} catch (Exception e) {
 				System.out.println("Valor digitado inválido!!!");
 			}
+			
 		} while (continuar);
-
+		
+		System.out.println("Digite Enter para seguir !!");		
+		teclado.nextLine();
+		System.out.println("Realize a alteração no Contato !!\n");
+		
 		System.out.println("Nome (" + listaCadContato.get(x).getNome() + "): ");
 		listaCadContato.get(x).setNome(teclado.nextLine());
 
@@ -72,6 +81,9 @@ public class ViewCadContato {
 
 		System.out.println("Telefone (" + listaCadContato.get(x).getTelefone() + "): ");
 		listaCadContato.get(x).setTelefone(teclado.nextLine());
+		
+		System.out.println("Digite Enter para seguir !!");		
+		teclado.nextLine();
 
 	}
 
@@ -81,25 +93,31 @@ public class ViewCadContato {
 		System.out.println("Digite o código do contato para deletar");
 		x = Integer.parseInt(teclado.nextLine());
 		listaCadContato.remove(x);
+		System.out.println("Digite Enter para seguir !!");
+		teclado.nextLine();
+		System.out.println("Contato Excluido com Sucesso !!\n");
 	}
 
 	public void pesquisar(ArrayList<Contato> listaCadContato) {
 		boolean flag = true;
 		Contato contato = new Contato();
-		System.out.println("Digite o nome que deseja pesquisar: ");
+		System.out.println("Digite o nome que deseja pesquisar: \n\n");
 		contato.setNome(teclado.nextLine());
 
 		for (int x = 0; x < listaCadContato.size(); x++) {
 			if (listaCadContato.get(x).getNome().equals(contato.getNome()) == true) {
 				System.out.println("Nome: " + listaCadContato.get(x).getNome());
-				System.out.println("Marca: " + listaCadContato.get(x).getIdade());
-				System.out.println("Modelo: " + listaCadContato.get(x).getTelefone());				
+				System.out.println("Idade: " + listaCadContato.get(x).getIdade());
+				System.out.println("Telefone: " + listaCadContato.get(x).getTelefone());				
 				flag = false;
+				
 			}
 		}
 
 		if (flag == false) {
-			System.out.println("Contato Pesquisado");
+			System.out.println("Contato Pesquisado \n");
+			System.out.println("Digite Enter para seguir !!");
+			teclado.nextLine();
 		}
 	}
 	

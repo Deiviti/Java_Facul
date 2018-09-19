@@ -31,7 +31,7 @@ public class Controller {
 				viewCadContato.pesquisar(listaCadContato);
 				break;
 			case "6":
-				System.out.println("Aplicação Encerrada");
+				System.out.println("Aplicação Encerrada \n");
 				continuar = false;
 				break;
 			default:
