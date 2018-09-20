@@ -4,16 +4,22 @@ import java.util.Scanner;
 public class ViewCadContato {
 	
 	Scanner teclado = new Scanner(System.in);
-	private ArrayList<Contato> listaCadContato;
+	private ArrayList<Contato> viewCadContato;
 	public ViewCadContato() {
 		setInput(new Scanner(System.in));
 	}
 	
-	public String mostraMenu() {		
+	private void setInput(Scanner scanner) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String mostraMenu(int tam) {		
 		System.out.println("\n");
 		System.out.println("Agenda de Contatos");
 		System.out.println("\n");
-		System.out.println("1 - Inserir");
+		System.out.println("Cadastros realizados até o momento: \n" + tam);
+		System.out.println("1 - Incluir");
 		System.out.println("2 - Listar");
 		System.out.println("3 - Alterar");
 		System.out.println("4 - Excluir");
@@ -24,7 +30,7 @@ public class ViewCadContato {
 		return teclado.nextLine();
 	}
 	
-	public Contato inserir(ArrayList<Contato> listaCadContato) {
+	public Contato incluir(ArrayList<Contato> listaCadContato) {
 
 		Contato contato = new Contato();
 		System.out.println("Digite o Nome do Contato: \n");		
@@ -32,7 +38,10 @@ public class ViewCadContato {
 		System.out.println("Digite a Idade do Contato: \n");		
 		contato.setIdade(teclado.nextLine());		
 		System.out.println("Digite o telefone do Contato: \n");		
-		contato.setTelefone(teclado.nextLine());		
+		contato.setTelefone(teclado.nextLine());	
+		System.out.println("Digite a Altura do Contato: \n");
+		String alturaSTR = teclado.nextLine();
+		contato.setAltura(Float.valueOf(alturaSTR));
 		listaCadContato.add(contato);
 		System.out.println("Digite Enter para seguir !!");
 		teclado.nextLine();
@@ -82,20 +91,40 @@ public class ViewCadContato {
 		System.out.println("Telefone (" + listaCadContato.get(x).getTelefone() + "): ");
 		listaCadContato.get(x).setTelefone(teclado.nextLine());
 		
-		System.out.println("Digite Enter para seguir !!");		
+		System.out.println("Altura (" + listaCadContato.get(x).getAltura() + "): ");
+		listaCadContato.get(x).setAltura(teclado.nextLine());
+		
+		System.out.println("Digite Enter para seguir !!");
+		teclado.nextLine();
+		System.out.println("Alteração realizada com Sucesso !!");
+		System.out.println("Nome: " + listaCadContato.get(x).getNome());
+		System.out.println("Idade: " + listaCadContato.get(x).getIdade());
+		System.out.println("Telefone: " + listaCadContato.get(x).getTelefone());
+		System.out.println("Altura: " + listaCadContato.get(x).getAltura());
+		System.out.println("\n\n");
+		System.out.println("Digite Enter para seguir !!");
 		teclado.nextLine();
 
 	}
 
 	public void excluir(ArrayList<Contato> listaCadContato) {
-		listar(listaCadContato);
-		int x = 0;
-		System.out.println("Digite o código do contato para deletar");
-		x = Integer.parseInt(teclado.nextLine());
-		listaCadContato.remove(x);
-		System.out.println("Digite Enter para seguir !!");
-		teclado.nextLine();
-		System.out.println("Contato Excluido com Sucesso !!\n");
+		listar(listaCadContato);			
+		System.out.println("Deseja realmente excluir um cadastro?");
+	    System.out.println("Se SIM digite - 1\n\nSe NÃO digite - 2");
+	    String op = teclado.nextLine();
+	    
+	    switch(op) {
+	    case "1":
+	    	System.out.println("\n\n");
+			System.out.println("Digite o Código da pessoa a ser excluída:");
+			int delete = teclado.nextInt();												
+			listaCadContato.remove(delete);
+	    	break;
+	    case "2":
+	    	
+	    	break;
+	    }    						
+		
 	}
 
 	public void pesquisar(ArrayList<Contato> listaCadContato) {
@@ -108,7 +137,8 @@ public class ViewCadContato {
 			if (listaCadContato.get(x).getNome().equals(contato.getNome()) == true) {
 				System.out.println("Nome: " + listaCadContato.get(x).getNome());
 				System.out.println("Idade: " + listaCadContato.get(x).getIdade());
-				System.out.println("Telefone: " + listaCadContato.get(x).getTelefone());				
+				System.out.println("Telefone: " + listaCadContato.get(x).getTelefone());
+				System.out.println("Altura: " + listaCadContato.get(x).getAltura());
 				flag = false;
 				
 			}
@@ -120,34 +150,20 @@ public class ViewCadContato {
 			teclado.nextLine();
 		}
 	}
+
+	/**
+	 * @return the viewCadContato
+	 */
+	public ArrayList<Contato> getViewCadContato() {
+		return viewCadContato;
+	}
+
+	/**
+	 * @param viewCadContato the viewCadContato to set
+	 */
+	public void setViewCadContato(ArrayList<Contato> viewCadContato) {
+		this.viewCadContato = viewCadContato;
+	}
 	
-	/**
-	 * @return the input
-	 */
-	public Scanner getInput() {
-		return teclado;
-	}
-
-	/**
-	 * @param input the input to set
-	 */
-	public void setInput(Scanner input) {
-		this.teclado = input;
-	}
-
-	/**
-	 * @return the listaCadContato
-	 */
-	public ArrayList<Contato> getListaCadContato() {
-		return listaCadContato;
-	}
-
-	/**
-	 * @param listaCadContato the listaCadContato to set
-	 */
-	public void setListaCadContato(ArrayList<Contato> listaCadContato) {
-		this.listaCadContato = listaCadContato;
-	}
-
 	
 }

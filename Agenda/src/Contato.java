@@ -3,6 +3,7 @@ public class Contato {
 	private String nome;
 	private String idade;
 	private String telefone;
+	private float altura;
 	
 	
 	
@@ -28,7 +29,7 @@ public class Contato {
 	
 	String mostraDados() {						// método
 		
-		String ret = ("\nNome: "+ this.nome +"\nIdade: "+ this.idade +"\nTelefone: " + this.telefone);
+		String ret = ("\nNome: "+ this.nome +"\nIdade: "+ this.idade +"\nTelefone: " + this.telefone + "\nAltura" + this.altura);
 		return ret;								// ret (variável)
 	}
 	
@@ -37,23 +38,18 @@ public class Contato {
 	 */
 	@Override
 	public String toString() {
-		return "Contato [nome=" + nome + ", idade=" + idade + ", telefone=" + telefone + "]";
+		return "Contato [nome=" + nome + ", idade=" + idade + ", telefone=" + telefone + ", altura="+ altura + "]";
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + Float.floatToIntBits(altura);
 		result = prime * result + ((idade == null) ? 0 : idade.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -63,6 +59,8 @@ public class Contato {
 		if (getClass() != obj.getClass())
 			return false;
 		Contato other = (Contato) obj;
+		if (Float.floatToIntBits(altura) != Float.floatToIntBits(other.altura))
+			return false;
 		if (idade == null) {
 			if (other.idade != null)
 				return false;
@@ -80,6 +78,23 @@ public class Contato {
 			return false;
 		return true;
 	}
+	/**
+	 * @return the altura
+	 */
+	public float getAltura() {
+		return altura;
+	}
+	/**
+	 * @param string the altura to set
+	 */
+	public void setAltura(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setAltura(float altura) {
+		this.altura = altura;
+	}
+	
 	
 	
 	

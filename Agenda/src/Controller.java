@@ -12,11 +12,11 @@ public class Controller {
 	private void trataMenu() {
 		boolean continuar = true;
 		do {
-			String op = viewCadContato.mostraMenu();
+			String op = viewCadContato.mostraMenu(listaCadContato.size());
 
 			switch (op) {
 			case "1":
-				viewCadContato.inserir(listaCadContato);
+				viewCadContato.incluir(listaCadContato);
 				break;
 			case "2":
 				viewCadContato.listar(listaCadContato);
